@@ -1,5 +1,7 @@
 Rails.application.routes.draw do
 
+  root to: 'posts#index'
+  
   get '/login' => 'admin/sessions#new'
   get '/logout' => 'admin/sessions#destroy'
 
@@ -15,6 +17,9 @@ Rails.application.routes.draw do
     resources :sessions, only: [:new, :create, :destroy]
     resources :moderators, only: [:index, :edit, :update]
   end
+
+  resources :posts, only: [:index, :show]
+  resources :messages, only: [:new, :create]
 
   match 'dismiss_all_notifications', to: 'admin/notifications#delete_all', via: :delete
 end

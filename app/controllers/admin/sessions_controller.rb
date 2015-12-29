@@ -2,6 +2,7 @@ class Admin::SessionsController < Admin::ApplicationController
 	before_action :authorize, except: [:new, :create]
 	
   def new
+    redirect_to admin_dashboard_index_url if current_moderator
   end
 
   def create
