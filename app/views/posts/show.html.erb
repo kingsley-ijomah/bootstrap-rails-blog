@@ -1,2 +1,21 @@
 <h1>Posts#show</h1>
-<p>Find me in app/views/posts/show.html.erb</p>
+
+<%= link_to 'All Posts', posts_path %>
+
+<p>
+	<%= @post.title %><br>
+	<%= time_ago @post.created_at %>
+</p>
+
+<p>
+	<%= @post.content %>
+</p>
+
+<h3>Comments</h3>
+<p>
+	<% @post.comments.each.with_index(1) do |comment, index| %>
+		<%= comment.message %><b> <%= double_digit_number(index) %></b><br>
+		<b><%= comment.visitor.fullname %></b> commented: <%= time_ago @post.created_at %>
+	<% end %>
+</p>
+<hr>
