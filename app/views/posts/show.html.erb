@@ -19,3 +19,24 @@
 	<% end %>
 </p>
 <hr>
+
+<%= form_for @visitor_comment, url: comments_url do |f| %>
+	<p>
+		<%= f.label :fullname %>
+		<%= f.text_field :fullname %>
+	</p>
+
+	<p>
+		<%= f.label :email %>
+		<%= f.text_field :email %>
+	</p>
+
+	<%= f.fields_for :comments do |c| %>
+		<p>
+			<%= c.label :message %>
+			<%= c.text_area :message %>
+		</p>
+	<% end %>
+
+	<p><%= f.submit 'Add Comment' %></p>
+<% end %>
