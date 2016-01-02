@@ -15,7 +15,7 @@
 <p>
 	<% @post.comments.each.with_index(1) do |comment, index| %>
 		<%= comment.message %><b> <%= double_digit_number(index) %></b><br>
-		<b><%= comment.visitor.fullname %></b> commented: <%= time_ago @post.created_at %>
+		<b><%= comment.visitor.fullname %></b> commented: <%= time_ago comment.created_at %>
 	<% end %>
 </p>
 <hr>
@@ -35,6 +35,7 @@
 		<p>
 			<%= c.label :message %>
 			<%= c.text_area :message %>
+			<%= c.hidden_field :post_id, value: @post.id %>
 		</p>
 	<% end %>
 
