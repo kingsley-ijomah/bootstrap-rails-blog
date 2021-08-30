@@ -7,6 +7,6 @@ class Admin::VisitorsController < Admin::ApplicationController
   	@visitor = Visitor.find(params[:id])
   	@visitor.destroy
 
-  	redirect_to :back, notice: 'Successfully deleted visitor'
+  	redirect_back(fallback_location: admin_visitors_path), notice: 'Successfully deleted visitor'
   end
 end

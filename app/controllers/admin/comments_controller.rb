@@ -20,6 +20,6 @@ class Admin::CommentsController < Admin::ApplicationController
   	@comment = Comment.find(params[:id])
   	@comment.destroy
 
-  	redirect_to :back, notice: 'Successfully deleted comment'
+  	redirect_back(fallback_location: admin_comments_path), notice: 'Successfully deleted comment'
   end
 end

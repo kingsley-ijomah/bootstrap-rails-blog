@@ -23,6 +23,6 @@ class Admin::MessagesController < Admin::ApplicationController
   	@message = Message.find(params[:id])
   	@message.destroy
 
-  	redirect_to :back, notice: 'Message was successfully deleted'
+  	redirect_back(fallback_location: admin_messages_path), notice: 'Message was successfully deleted'
   end
 end

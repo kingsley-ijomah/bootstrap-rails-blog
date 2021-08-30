@@ -32,7 +32,7 @@ class Admin::TagsController < Admin::ApplicationController
     @tag = Tag.find(params[:id])
     @tag.destroy
 
-    redirect_to :back, notice: 'Successfully deleted tag'
+    redirect_back(fallback_location: admin_tags_path), notice: 'Successfully deleted tag'
   end
 
   private
