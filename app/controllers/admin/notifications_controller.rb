@@ -8,11 +8,11 @@ class Admin::NotificationsController < Admin::ApplicationController
   	@notifiable = Notification.find(params[:id])
   	@notifiable.destroy
 
-  	redirect_to :back, notice: 'Notification was deleted successfully'
+  	redirect_back, notice: 'Notification was deleted successfully'
   end
 
   def delete_all
   	Notification.delete_all
-  	redirect_to :back, notice: 'All notifications deleted successfully'
+  	redirect_back(fallback_location: admin_notifications_path), notice: 'All notifications deleted successfully'
   end
 end

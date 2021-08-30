@@ -45,7 +45,7 @@ class Admin::PostsController < Admin::ApplicationController
   	@post = Post.find(params[:id])
   	@post.destroy
 
-  	redirect_to :back, notice: 'Post was successfully deleted'
+  	redirect_back(fallback_location: admin_posts_path), notice: 'Post was successfully deleted'
   end
 
   private

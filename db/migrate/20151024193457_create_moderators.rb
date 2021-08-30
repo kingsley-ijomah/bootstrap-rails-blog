@@ -1,4 +1,4 @@
-class CreateModerators < ActiveRecord::Migration
+class CreateModerators < ActiveRecord::Migration[6.1]
   def change
     create_table :moderators do |t|
       t.string :fullname
